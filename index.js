@@ -29,12 +29,13 @@ function renderTable() {
 
 function handleSearchButtonClick() {
   // Format the user's search by removing leading and trailing whitespace, lowercase the string
-  console.log($ufoInput)
+  
   var filterUFO = $ufoInput.value.trim().toLowerCase();
-
+  console.log($ufoInput)
+  console.log(filterUFO)
   // Set filteredAddresses to an array of all addresses whose "state" matches the filter
   filteredUFO = ufoData.filter(function(UFO) {
-    var ufoState = UFO.datetime.toLowerCase();
+    var ufoState = UFO.state.toLowerCase();
 
     // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
     return ufoState === filterUFO;
