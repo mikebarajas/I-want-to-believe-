@@ -33,50 +33,53 @@ function renderTable() {
   }
 }
 
-  // function handleSearchButtonClick() {
-  //   // create a list of searches
-  //   var searches ={
-  //     // date: $dateSearch.value.trim().toLowerCase(), 
-  //     // city: $citySearch.value.trim().toLowerCase(), 
-  //     state: $stateSearch.value.trim().toLowerCase() 
-  //     // country: $countrySearch.value.trim().toLowerCase(), 
-  //     // shape: $shapeSearch.value.trim().toLowerCase()
-  //   };
-  //   console.log(searches);
-   
-  //   // splice out empty seaches
-
-  //   // iterate through list of searches and filter desired data
-    
-  //   var filterUFO = $stateSearch.value.trim().toLowerCase();
-  //   filteredUFO = ufoData1.filter(xs => xs.state === filterUFO);
-  //   console.log(filteredUFO)
-  //   renderTable();
-  // }
-
   function handleSearchButtonClick() {
     // create a list of searches
     var searches ={
-      date: $dateSearch.value.trim().toLowerCase(), 
-      city: $citySearch.value.trim().toLowerCase(), 
-      state: $stateSearch.value.trim().toLowerCase(), 
-      country: $countrySearch.value.trim().toLowerCase() 
-      shape: $shapeSearch.value.trim().toLowerCase()
-    }
+      // date: $dateSearch.value.trim().toLowerCase(), 
+      // city: $citySearch.value.trim().toLowerCase(), 
+      state: $stateSearch.value.trim().toLowerCase() 
+      // country: $countrySearch.value.trim().toLowerCase(), 
+      // shape: $shapeSearch.value.trim().toLowerCase()
+    };
     console.log(searches);
-    console.log(Object.keys(searches));
-    console.log(Object.values(searches));
-    // slice out empty seaches
-    searches = searches.filter()
+   
+    // splice out empty seaches
+
     // iterate through list of searches and filter desired data
-    for (i = 0; i < searches.length; i++) { 
-      var searchParameter = Object.keys(i)
-      var searchFilter = Object.values(i)
-      filteredUFO = ufoData1.filter(x => x.searchParameter === searchFilter);
-      console.log(filteredUFO)
-    }
+    var searchParameter = Object.keys(searches);
+    var searchFilter = Object.values(searches);
+    console.log(searchParameter); //needs to be an object not a string
+    console.log(searchFilter); 
+    console.log(filteredUFO);
+    filteredUFO = filteredUFO.filter(xs => xs.searchParameter === searchFilter);
+    console.log(filteredUFO);
     renderTable();
   }
+
+  // function handleSearchButtonClick() {
+  //   // create a list of searches
+  //   var searches ={
+  //     dateTime: $dateSearch.value, 
+  //     city: $citySearch.value.trim().toLowerCase(), 
+  //     state: $stateSearch.value.trim().toLowerCase(), 
+  //     country: $countrySearch.value.trim().toLowerCase(), 
+  //     shape: $shapeSearch.value.trim().toLowerCase()
+  //   }
+  //   console.log(searches);
+  //   console.log(Object.keys(searches));
+  //   console.log(Object.values(searches));
+
+  //   // iterate through list of searches and filter desired data
+  //   for (i = 0; i < searches.length; i++) { 
+  //     if (object.values(i) !="")
+  //       var searchParameter = Object.keys(i)
+  //       var searchFilter = Object.values(i)
+  //       filteredUFO = filteredUFO.filter(x => x.searchParameter === searchFilter);
+  //       console.log(filteredUFO)
+  //   }
+  //   renderTable();
+  // }
 
 // Render the table for the first time on page load
 renderTable();
