@@ -1,6 +1,10 @@
 // Get references to the tbody element, input field and button
 var $tbody = document.querySelector("tbody");
-var $ufoInput = document.querySelector("#state");
+var $dateSearch = document.querySelector("#datetime");
+var $citySearch = document.querySelector("#city");
+var $stateSearch = document.querySelector("#state");
+var $countrySearch = document.querySelector("#country");
+var $shapeSearch = document.querySelector("#shape");
 var $searchBtn = document.querySelector("#search");
 
 // Add an event listener to the searchButton, call handleSearchButtonClick when clicked
@@ -27,21 +31,32 @@ function renderTable() {
   }
 }
 
-function handleSearchButtonClick() {
-  // Format the user's search by removing leading and trailing whitespace, lowercase the string
-  
-  var filterUFO = $ufoInput.value.trim().toLowerCase();
-  console.log($ufoInput)
-  console.log(filterUFO)
-  // Set filteredAddresses to an array of all addresses whose "state" matches the filter
-  filteredUFO = ufoData.filter(function(UFO) {
-    var ufoState = UFO.state.toLowerCase();
-
-    // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
-    return ufoState === filterUFO;
-  });
-  renderTable();
-}
-
+  function handleSearchButtonClick() {
+    filteredUFO = ufoData
+    // create a list of searches
+    var searches ={
+      dateTime: $dateSearch.value, 
+      city: $citySearch.value.trim().toLowerCase(), 
+      state: $stateSearch.value.trim().toLowerCase(), 
+      country: $countrySearch.value.trim().toLowerCase(), 
+      shape: $shapeSearch.value.trim().toLowerCase()
+    }
+    // filter through keys and values
+    var searchParameter = Object.keys(searches)
+    var searchFilter = Object.values(searches)
+    filteredUFO = filteredUFO.filter(x => {
+      for (i = 0; i < 5; i++) {
+        if (searchFilter[i] !=="") {
+            if (x[searchParameter[i]] !== searchFilter[i]){
+              return false  
+            }
+        }
+      } 
+      return true 
+    })
+    renderTable();
+  }
 // Render the table for the first time on page load
 renderTable();
+
+
