@@ -10,6 +10,7 @@
 </head>
 
 <body>
+  
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -45,6 +46,31 @@
   </div>
   <script src="ufoData1.js" type="text/javascript"></script>
   <script src="test.js" type="text/javascript"></script>
+  
+  <!-- testing a drop down menu -->
+  <form name="search_cat_bar" method="get" action="http://www.datafeedfile.com/examples/javascript_search.php">
+    <table width="700" border="1" cellpadding="5">
+      <tr>
+        <td>
+          <input type="hidden" name="dff_view" value="grid">
+          Search:<input type="text" name="dff_keyword" size="30" maxlength="50"> in 
+          <select name="dff_cat1num" size="1">
+            <option value="-1">All Categories
+            <option value="-2">--------------
+            <option value="country">Country
+            <option value="state">State
+            <option value= "city">City
+            <option value="dateTime">Date
+            <option value="shape">Shape
+          </select>
+          <input type="submit" value="Find">
+        </td>
+      </tr>
+    </table>
+   </form>
+   
+
 </body>
 
 </html>
+

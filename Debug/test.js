@@ -7,6 +7,8 @@ var $countrySearch = document.querySelector("#country");
 var $shapeSearch = document.querySelector("#shape");
 var $searchBtn = document.querySelector("#search");
 
+
+
 // Add an event listener to the searchButton, call handleSearchButtonClick when clicked
 $searchBtn.addEventListener("click", handleSearchButtonClick);
 
@@ -31,64 +33,52 @@ function renderTable() {
   }
 }
 
-// function handleSearchButtonClick() {
-//   // Format the user's search by removing leading and trailing whitespace, lowercase the string
-  
-//   var filterUFO = $countrySearch.value.trim().toLowerCase();
-//   var filterUFO = $stateSearch.value.trim().toLowerCase();
-//   console.log($stateSearch)
-//   console.log($countrySearch)
-//   console.log(filterUFO)
-//   // Set filteredAddresses to an array of all addresses whose "state" matches the filter
-//   filteredUFO = ufoData1.filter(function(UFO) {
-//     var ufoCountry = UFO.country.toLowerCase();
-//     var ufoState = UFO.state.toLowerCase();
+  // function handleSearchButtonClick() {
+  //   // create a list of searches
+  //   var searches ={
+  //     // date: $dateSearch.value.trim().toLowerCase(), 
+  //     // city: $citySearch.value.trim().toLowerCase(), 
+  //     state: $stateSearch.value.trim().toLowerCase() 
+  //     // country: $countrySearch.value.trim().toLowerCase(), 
+  //     // shape: $shapeSearch.value.trim().toLowerCase()
+  //   };
+  //   console.log(searches);
+   
+  //   // splice out empty seaches
 
-//     // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
-//     return ufoCountry === filterUFO;
-//     return ufoState === filterUFO;
-//   });
-//   renderTable();
-// }
+  //   // iterate through list of searches and filter desired data
+    
+  //   var filterUFO = $stateSearch.value.trim().toLowerCase();
+  //   filteredUFO = ufoData1.filter(xs => xs.state === filterUFO);
+  //   console.log(filteredUFO)
+  //   renderTable();
+  // }
 
-function handleSearchButtonClick() {
-  // Format the user's search by removing leading and trailing whitespace, lowercase the string
-  if ($dateSearch.length > 0) { 
-            var search = $dateSearch
-            var searchParameter = 'datetime';
-          }
-  else if ($citySearch.length > 0) { 
-            var search = $citySearch
-            var searchParameter = 'city';
-          }
-  else if ($stateSearch.length > 0) {
-            var search = $stateSearch
-            var searchParameter = 'state';
-          }
-  else if ($countrySearch.length > 0) { 
-            var search = $countrySearch; 
-            var searchParameter = 'country';
-          }
-  else if ($shapeSearch.length > 0) { 
-            var search = $shapeSearch 
-            var searchParameter = 'shape';
-          }
-
-  console.log('Search: ', search)
-  console.log('Search Parameter: ',searchParameter)
-
-  // var filterUFO = search.value.trim().toLowerCase();
-
-  // // Set filteredAddresses to an array of all addresses whose "state" matches the filter
-  // filteredUFO = ufoData1.filter(function(UFO) {
-  //   var ufoState = UFO.searchParameter.toLowerCase();
-  //   console.log('filteredUFO: ',filteredUFO)
-  //   console.log('ufoState: ',ufoState)
-  //   // If true, add the address to the filteredAddresses, otherwise don't add it to filteredAddresses
-  //   return ufoState === filterUFO;
-  // });
-  // renderTable();
-}
+  function handleSearchButtonClick() {
+    // create a list of searches
+    var searches ={
+      date: $dateSearch.value.trim().toLowerCase(), 
+      city: $citySearch.value.trim().toLowerCase(), 
+      state: $stateSearch.value.trim().toLowerCase(), 
+      country: $countrySearch.value.trim().toLowerCase() 
+      shape: $shapeSearch.value.trim().toLowerCase()
+    }
+    console.log(searches);
+    console.log(Object.keys(searches));
+    console.log(Object.values(searches));
+    // slice out empty seaches
+    searches = searches.filter()
+    // iterate through list of searches and filter desired data
+    for (i = 0; i < searches.length; i++) { 
+      var searchParameter = Object.keys(i)
+      var searchFilter = Object.values(i)
+      filteredUFO = ufoData1.filter(x => x.searchParameter === searchFilter);
+      console.log(filteredUFO)
+    }
+    renderTable();
+  }
 
 // Render the table for the first time on page load
 renderTable();
+
+
